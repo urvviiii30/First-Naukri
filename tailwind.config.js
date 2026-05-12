@@ -1,0 +1,18 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        primary: '#2563EB',
+        primaryLight: '#3B82F6',
+        background: '#F8FAFC',
+      },
+      transitionDuration: {
+        400: '400ms',
+      },
+    },
+  },
+  plugins: [],
+}
+

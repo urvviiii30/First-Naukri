@@ -1,0 +1,728 @@
+/* ========== Resume Builder — Layout & Forms ========== */
+
+.rb-page {
+  width: 100%;
+  min-height: 100%;
+  background: #f1f5f9;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.rb-page-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.rb-header {
+  margin-bottom: 2rem;
+}
+
+.rb-header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 0.25rem;
+}
+
+.rb-header p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Top toolbar */
+.rb-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.rb-template-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rb-template-switcher span {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #475569;
+  white-space: nowrap;
+}
+
+.rb-template-btn {
+  padding: 0.4rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rb-template-btn:hover {
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+.rb-template-btn.active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+
+.rb-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+}
+
+.rb-download-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+.rb-download-btn svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Two-panel layout */
+.rb-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* ========== Left Panel — Form ========== */
+.rb-form-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.rb-section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s ease;
+}
+
+.rb-section:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.rb-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+  border-bottom: 1px solid #e2e8f0;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s ease;
+}
+
+.rb-section-header:hover {
+  background: linear-gradient(135deg, #eff6ff, #e8f0fe);
+}
+
+.rb-section-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.rb-section-icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  background: #eff6ff;
+  color: #2563eb;
+  flex-shrink: 0;
+}
+
+.rb-section-header h3 {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.rb-section-toggle {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  background: none;
+  color: #94a3b8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.rb-section-toggle.open {
+  transform: rotate(180deg);
+  color: #2563eb;
+}
+
+.rb-section-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: rb-fadeIn 0.25s ease;
+}
+
+@keyframes rb-fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form rows */
+.rb-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.875rem;
+}
+
+.rb-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.rb-field.full {
+  grid-column: 1 / -1;
+}
+
+.rb-field label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.rb-field input,
+.rb-field textarea {
+  width: 100%;
+  padding: 0.6rem 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #0f172a;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  font-family: inherit;
+}
+
+.rb-field input:focus,
+.rb-field textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  background: #fff;
+}
+
+.rb-field input::placeholder,
+.rb-field textarea::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.rb-field textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+/* Multi-entry cards */
+.rb-entry-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem;
+  position: relative;
+}
+
+.rb-entry-card + .rb-entry-card {
+  margin-top: 0.75rem;
+}
+
+.rb-remove-entry {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  background: #fee2e2;
+  color: #dc2626;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.15s ease;
+  line-height: 1;
+}
+
+.rb-remove-entry:hover {
+  background: #fecaca;
+  transform: scale(1.1);
+}
+
+.rb-add-entry {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #2563eb;
+  background: #eff6ff;
+  border: 1.5px dashed #93c5fd;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.rb-add-entry:hover {
+  background: #dbeafe;
+  border-color: #60a5fa;
+  transform: translateY(-1px);
+}
+
+/* Skills tags */
+.rb-skills-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.375rem;
+}
+
+.rb-skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1e40af;
+  background: #dbeafe;
+  border-radius: 999px;
+}
+
+.rb-skill-tag button {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  font-size: 0.875rem;
+  font-weight: 800;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.rb-skill-tag button:hover {
+  color: #dc2626;
+}
+
+/* ========== Right Panel — Preview ========== */
+.rb-preview-panel {
+  position: sticky;
+  top: 2rem;
+}
+
+.rb-preview-frame {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.rb-preview-label {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rb-preview-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: rb-pulse 2s infinite;
+}
+
+@keyframes rb-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.rb-preview-content {
+  padding: 2rem;
+  min-height: 600px;
+}
+
+/* ========== Resume Template: Professional ========== */
+.resume-professional {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+.resume-professional .resume-header {
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #1a1a1a;
+  margin-bottom: 1.25rem;
+}
+
+.resume-professional .resume-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #0f172a;
+}
+
+.resume-professional .resume-contact {
+  font-size: 0.75rem;
+  color: #475569;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.resume-professional .resume-contact span + span::before {
+  content: '•';
+  margin-right: 0.5rem;
+  color: #94a3b8;
+}
+
+.resume-professional .resume-section {
+  margin-bottom: 1rem;
+}
+
+.resume-professional .resume-section-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #0f172a;
+  border-bottom: 1px solid #cbd5e1;
+  padding-bottom: 0.25rem;
+  margin: 0 0 0.625rem;
+}
+
+.resume-professional .resume-entry {
+  margin-bottom: 0.625rem;
+}
+
+.resume-professional .resume-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.resume-professional .resume-entry-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.resume-professional .resume-entry-subtitle {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: #475569;
+  margin: 0;
+}
+
+.resume-professional .resume-entry-date {
+  font-size: 0.6875rem;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.resume-professional .resume-entry-desc {
+  font-size: 0.75rem;
+  color: #334155;
+  margin: 0.25rem 0 0;
+}
+
+.resume-professional .resume-skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.resume-professional .resume-skill-chip {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  color: #334155;
+}
+
+.resume-professional .resume-objective {
+  font-size: 0.75rem;
+  color: #334155;
+  font-style: italic;
+  margin: 0;
+}
+
+.resume-professional .resume-links {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.6875rem;
+}
+
+.resume-professional .resume-links a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+/* ========== Resume Template: Modern ========== */
+.resume-modern {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: #1e293b;
+  line-height: 1.55;
+}
+
+.resume-modern .resume-header {
+  background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.25rem;
+}
+
+.resume-modern .resume-name {
+  font-size: 1.375rem;
+  font-weight: 800;
+  margin: 0 0 0.375rem;
+  letter-spacing: 0.02em;
+}
+
+.resume-modern .resume-contact {
+  font-size: 0.6875rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  opacity: 0.85;
+}
+
+.resume-modern .resume-section {
+  margin-bottom: 1rem;
+}
+
+.resume-modern .resume-section-title {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: #2563eb;
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid #dbeafe;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.resume-modern .resume-entry {
+  margin-bottom: 0.625rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid #e2e8f0;
+}
+
+.resume-modern .resume-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.resume-modern .resume-entry-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.resume-modern .resume-entry-subtitle {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.resume-modern .resume-entry-date {
+  font-size: 0.6875rem;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.resume-modern .resume-entry-desc {
+  font-size: 0.75rem;
+  color: #475569;
+  margin: 0.2rem 0 0;
+}
+
+.resume-modern .resume-skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.resume-modern .resume-skill-chip {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  border-radius: 999px;
+  color: #1d4ed8;
+}
+
+.resume-modern .resume-objective {
+  font-size: 0.75rem;
+  color: #475569;
+  margin: 0;
+  padding: 0.75rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 3px solid #2563eb;
+}
+
+.resume-modern .resume-links {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.6875rem;
+}
+
+.resume-modern .resume-links a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 1024px) {
+  .rb-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .rb-preview-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .rb-page {
+    padding: 1rem;
+  }
+
+  .rb-row {
+    grid-template-columns: 1fr;
+  }
+
+  .rb-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rb-template-switcher {
+    justify-content: center;
+  }
+
+  .rb-download-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ========== Print Styles ========== */
+@media print {
+  /* Hide everything */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Show only preview content */
+  .rb-preview-content,
+  .rb-preview-content * {
+    visibility: visible;
+  }
+
+  .rb-preview-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 0.5in;
+    background: #fff;
+  }
+
+  /* Hide non-print elements inside preview */
+  .rb-preview-label {
+    display: none !important;
+  }
+
+  .rb-preview-frame {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+}

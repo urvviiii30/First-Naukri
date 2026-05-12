@@ -1,0 +1,286 @@
+/* First Naukri – Auth card and sliding panels */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: #f8fafc;
+}
+
+.auth-card {
+  position: relative;
+  width: 100%;
+  max-width: 920px;
+  min-height: 520px;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  display: flex;
+}
+
+/* Form section – left by default, slides right when signup */
+.auth-form-section {
+  flex: 0 0 50%;
+  width: 50%;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.5rem 2.5rem;
+  transition: transform 0.6s ease;
+  z-index: 1;
+  background: #fff;
+}
+
+.auth-card.right-panel-active .auth-form-section {
+  transform: translateX(100%);
+}
+
+/* Overlay section – right by default, slides left when signup */
+.auth-overlay-section {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.5rem 2.5rem;
+  transition: transform 0.6s ease;
+  z-index: 2;
+}
+
+.auth-card.right-panel-active .auth-overlay-section {
+  transform: translateX(-100%);
+}
+
+.auth-overlay-section h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.auth-overlay-section p {
+  margin: 0 0 1.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.auth-overlay-section .auth-overlay-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  align-self: flex-start;
+}
+
+.auth-overlay-section .auth-overlay-btn:hover {
+  background: #fff;
+  color: #2563eb;
+}
+
+.auth-overlay-section .auth-overlay-btn.primary {
+  background: #fff;
+  color: #2563eb;
+  border-color: #fff;
+}
+
+.auth-overlay-section .auth-overlay-btn.primary:hover {
+  background: #f1f5f9;
+  color: #1d4ed8;
+}
+
+/* Role toggle */
+.auth-role-toggle {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.5rem;
+  background: #f1f5f9;
+  border-radius: 9999px;
+  padding: 0.25rem;
+  width: fit-content;
+}
+
+.auth-role-toggle label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  margin: 0;
+}
+
+.auth-role-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.auth-role-toggle label span {
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.auth-role-toggle input:checked + span {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* Form typography and spacing */
+.auth-form-section h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.auth-form-section .subtitle {
+  margin: 0 0 1.5rem;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-form .field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.auth-form label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #334155;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 0.625rem 1rem;
+  font-size: 0.9375rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  background: #fff;
+  color: #0f172a;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.auth-form input::placeholder {
+  color: #94a3b8;
+}
+
+.auth-form .forgot-link {
+  font-size: 0.875rem;
+  color: #2563eb;
+  text-decoration: none;
+  margin-top: -0.25rem;
+}
+
+.auth-form .forgot-link:hover {
+  text-decoration: underline;
+}
+
+.auth-form .btn-primary {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+.auth-form .btn-primary:hover {
+  opacity: 0.95;
+}
+
+.auth-form .btn-primary:active {
+  transform: scale(0.99);
+}
+
+.auth-form-section .form-footer {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.auth-form-section .form-footer button {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  font-weight: 600;
+  color: #2563eb;
+  cursor: pointer;
+}
+
+.auth-form-section .form-footer button:hover {
+  text-decoration: underline;
+}
+
+/* Mobile: stack and show overlay below form */
+@media (max-width: 768px) {
+  .auth-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .auth-form-section {
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: auto;
+    transform: none !important;
+  }
+
+  .auth-overlay-section {
+    position: relative;
+    width: 100%;
+    min-height: 220px;
+    transform: none !important;
+  }
+
+  .auth-card.right-panel-active .auth-form-section,
+  .auth-card.right-panel-active .auth-overlay-section {
+    transform: none !important;
+  }
+
+  .auth-form-section,
+  .auth-overlay-section {
+    padding: 1.75rem 1.5rem;
+  }
+}
