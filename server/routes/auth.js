@@ -103,8 +103,12 @@ router.post('/login', async (req, res) => {
       return res.json({ token, user: userResponse })
 
     } catch (err) {
-      console.error("LOGIN ERROR:", err)
-      return res.status(500).json({ message: 'Login failed' })
+      console.error("LOGIN ERROR:", err.message || err)
+      // Give a clearer message when DB is not connected
+      if (err.name === 'MongoNotConnectedError' || err.message?.includes('Client must be connected')) {
+        return res.status(503).json({ message: 'Database is not available. Please check your MongoDB connection.' })
+      }
+      return res.status(500).json({ message: 'Login failed: ' + (err.message || 'Unknown error') })
     }
   })
 
